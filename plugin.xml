@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-plugin-ad-adPlay"
+    version="1.8">
+	
+    <name>Cordova adPlay plugin</name>
+    <description>Show adPlay full screen ad and rewarded video ad</description>
+    <author>mahdi kharazi (adplay.ir)</author>	
+    <license>adPlay.ir</license>
+    <keywords>cordova,plugin,ad,video,adPlay,monetisation</keywords>
+    <repo>https://github.com/adplaygit/cordova-plugin-adPlay</repo>
+    <issue>https://github.com/adplaygit/cordova-plugin-adPlay/issues</issue>	
+	<engines>
+	    <engine name="cordova" version=">=3.0.0" />
+	</engines>
+ 	
+    <js-module src="www/adPlay.js">
+        <clobbers target="window.adPlay" />
+    </js-module>    
+    
+	<!-- android -->
+	<platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="adPlayCordovaInterface">
+				<param name="android-package" value="ir.adPlay.adPlayCordova.adPlayCordovaInterface"/>
+			</feature>
+		</config-file>
+
+		<config-file target="AndroidManifest.xml" parent="/*">
+			
+ <uses-permission android:name="com.farsitel.bazaar.permission.PAY_THROUGH_BAZAAR" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" ></uses-permission>
+
+<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+
+		</config-file>
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<activity android:name="ir.adPlay.plugin.adPlayActivity"></activity>
+      <activity android:name="ir.adPlay.bazaarIAB.IABActivity"></activity>
+		</config-file>
+		
+		<source-file src="src/android/adPlayCordovaInterface.jar" target-dir="libs" />
+		
+		<source-file src="src/android/adPlayAndroidv2.0.jar" target-dir="libs" />
+<source-file src="src/android/AndroidStoreGooglePlay.jar" target-dir="libs" />
+<source-file src="src/android/bazaarIAB.jar" target-dir="libs" />
+
+	</platform>
+
+	<!-- ios -->
+	
+</plugin>
