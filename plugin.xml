@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="cordova-plugin-ad-adPlay"
-    version="1.8">
+    id="cordova-plugin-adplayIAB"
+    version="2.0">
 	
     <name>Cordova adPlay plugin</name>
     <description>Show adPlay full screen ad and rewarded video ad</description>
@@ -44,8 +44,7 @@
       <activity android:name="ir.adPlay.bazaarIAB.IABActivity"></activity>
 		</config-file>
 		
-		<source-file src="src/android/adPlayCordovaInterface.jar" target-dir="libs" />
-		
+				
 		<source-file src="src/android/adPlayAndroidv2.0.jar" target-dir="libs" />
 <source-file src="src/android/AndroidStoreGooglePlay.jar" target-dir="libs" />
 <source-file src="src/android/bazaarIAB.jar" target-dir="libs" />
