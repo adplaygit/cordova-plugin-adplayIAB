@@ -9,8 +9,8 @@
     <author>mahdi kharazi (adplay.ir)</author>	
     <license>adPlay.ir</license>
     <keywords>cordova,plugin,ad,video,adPlay,monetisation</keywords>
-    <repo>https://github.com/adplaygit/cordova-plugin-adPlay</repo>
-    <issue>https://github.com/adplaygit/cordova-plugin-adPlay/issues</issue>	
+    <repo>https://github.com/adplaygit/cordova-plugin-adplayIAB</repo>
+    <issue>https://github.com/adplaygit/cordova-plugin-adplayIAB/issues</issue>	
 	<engines>
 	    <engine name="cordova" version=">=3.0.0" />
 	</engines>
