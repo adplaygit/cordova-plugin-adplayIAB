@@ -19,24 +19,34 @@ module.exports = {
                         var arr = result.split(',');
                         self._availableReawardBase = false ;
                         self._availableUnReawardBase = false ;
-                        if(arr[1]=="true")
-                            self.onAdCompleteRewardBase();
-                        else
-                            self.onAdCompleteUnRewardBase();
+                        if(arr[1]=="true"){
+                            if(self.onAdCompleteRewardBase)
+                                self.onAdCompleteRewardBase();
+                        }
+                        else{
+                            if(self.onAdCompleteUnRewardBase)
+                                self.onAdCompleteUnRewardBase();
+                        }
+
 
                     }
                     if (result == "onInstallationComplete")
                     {
-                        self.onInstallationComplete();
+                        if(self.onInstallationComplete)
+                            self.onInstallationComplete();
                     }
                     if (result.indexOf("onAdAvailable")>-1)
                     {
                         var arr = result.split(',');
-                        if(arr[1]=="true"){
+                        if(arr[1]=="true")
+                        {
                             self._availableReawardBase = true ;
+                            if(self.onAdAvailableRewardBase)
                             self.onAdAvailableRewardBase();
-                        }else{
+                        }else
+                        {
                             self._availableUnReawardBase = true ;
+                            if(self.onAdAvailableUnRewardBase)
                             self.onAdAvailableUnRewardBase();
                         }
 
@@ -47,8 +57,10 @@ module.exports = {
                     {
                         self._availableReawardBase = false ;
                         self._availableUnReawardBase = false ;
-                        if (self.onAdFail)
+                        if (self.onAdFail){
                             self.onAdFail();
+                        }
+
                     }
                     if (result.indexOf( "onAdNotAvailable")>-1)
                     {
@@ -65,19 +77,21 @@ module.exports = {
                     if (result.indexOf("onConsumablePurchased")>-1)
                     {
                         var arr = result.split(',');
-
-                        self.onConsumablePurchased(arr[1]);
+                            if(self.onConsumablePurchased)
+                            self.onConsumablePurchased(arr[1]);
                     }
                     if (result.indexOf("onNonConsumablePurchased")>-1)
                     {
 
                         var arr = result.split(',');
-                        self.onNonConsumablePurchased(arr[1]);
+                        if(self.onNonConsumablePurchased)
+                            self.onNonConsumablePurchased(arr[1]);
                     }
                     if (result.indexOf("onPurchaseFail")>-1)
                     {
                         var arr = result.split(',');
-                        self.onPurchaseFail(arr[1]);
+                        if(self.onPurchaseFail)
+                            self.onPurchaseFail(arr[1]);
                     }
 
 
@@ -185,5 +199,19 @@ module.exports = {
             'startIAB',
             [element,payLoad]
         );
-    }
+    },
+    onAdAvailableRewardBase:null,
+    onAdAvailableUnRewardBase:null,
+    onAdFail:null,
+    onAdCompleteRewardBase:null,
+    onAdCompleteUnRewardBase:null,
+    onInstallationComplete:null,
+    onConsumablePurchased:null,
+    onNonConsumablePurchased:null,
+    onPurchaseFail:null
+
+
+
+
+
 };
