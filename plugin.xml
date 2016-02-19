@@ -46,7 +46,7 @@
 		</config-file>
 		
 				
-		<source-file src="src/android/adPlayAndroidv2.4.jar" target-dir="libs" />
+		<source-file src="src/android/adPlayAndroidv2.5.jar" target-dir="libs" />
 <source-file src="src/android/AndroidStoreGooglePlay.jar" target-dir="libs" />
 <source-file src="src/android/bazaarIAB.jar" target-dir="libs" />
 
