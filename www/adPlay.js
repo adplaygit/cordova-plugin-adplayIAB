@@ -50,6 +50,7 @@ module.exports = {
                         if (self.onAdFail)
                             self.onAdFail();
                     }
+<<<<<<< HEAD
                     if (result.indexOf( "onAdNotAvailable")>-1)
                     {
 
@@ -58,6 +59,17 @@ module.exports = {
                             self._availableReawardBase = false ;
                         }else{
                             self._availableUnReawardBase = false ;
+=======
+                    if (result.indexOf("onAdNotAvailable") > -1) {
+
+                        var arr = result.split(',');
+                        if (arr[1] == "true") {
+                            self._availableReawardBase = false;
+                        } else if (arr[1] == "false") {
+                            self._availableUnReawardBase = false;
+                        } else {
+                            self.__availableFullscreenBanner = false
+>>>>>>> parent of 047a17f... ....
                         }
 
                     }
