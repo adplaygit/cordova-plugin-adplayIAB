@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-adplayIAB"
-    version="2.5">
+    version="2.4">
 	
     <name>Cordova adPlay plugin</name>
     <description>Show adPlay full screen ad and rewarded video ad</description>
@@ -41,7 +41,8 @@
 		</config-file>
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
 			<activity android:name="ir.adPlay.plugin.adPlayActivity"></activity>
-     <activity android:name="ir.adPlay.bazaarIAB.IABActivity"></activity>	
+      <activity android:name="ir.adPlay.bazaarIAB.IABActivity" android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"></activity>
+		
 		</config-file>
 		
 				
