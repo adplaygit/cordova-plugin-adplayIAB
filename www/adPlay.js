@@ -62,7 +62,8 @@ module.exports = {
                         }
 
                     }
-                    if (result.indexOf("onAdNotAvailable") > -1) {
+                    if (result.indexOf("onAdNotAvailable") > -1)
+                    {
 
                         var arr = result.split(',');
                         if (arr[1] == "true") {
@@ -70,7 +71,7 @@ module.exports = {
                         } else if (arr[1] == "false") {
                             self._availableUnReawardBase = false;
                         } else {
-                            self.__availableFullscreenBanner = false
+                            self.__availableFullscreenBanner = false ;
                         }
 
                     }
