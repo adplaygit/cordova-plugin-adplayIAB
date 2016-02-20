@@ -1,101 +1,89 @@
 module.exports = {
 
-    _availableReawardBase: false,
-    _availableUnReawardBase: false,
-    __availableFullscreenBanner: false,
+    _availableReawardBase:false,
+    _availableUnReawardBase:false,
     //
 
-    init: function (applicationId, developerId) {
+    init: function(applicationId, developerId) {
         var self = this;
         cordova.exec(
-            function (result) {
-                console.log('setUp succeeded.' + result);
+            function (result)
+            {
+                console.log('setUp succeeded.'+result);
 
-                if (typeof result == "string") {
+                if (typeof result == "string")
+                {
                     //
-                    if (result.indexOf("onAdComplete") > -1) {
+                    if (result.indexOf("onAdComplete")>-1)
+                    {
                         var arr = result.split(',');
-                        self._availableReawardBase = false;
-                        self._availableUnReawardBase = false;
-                        self.__availableFullscreenBanner = false;
-                        if (arr[1] == "true") {
-                            if (self.onAdCompleteRewardBase)
-                                self.onAdCompleteRewardBase();
-                        }
-                        else {
-                            if (self.onAdCompleteUnRewardBase)
-                                self.onAdCompleteUnRewardBase();
-                        }
-
+                        self._availableReawardBase = false ;
+                        self._availableUnReawardBase = false ;
+                        if(arr[1]=="true")
+                            self.onAdCompleteRewardBase();
+                        else
+                            self.onAdCompleteUnRewardBase();
 
                     }
-                    if (result == "onInstallationComplete") {
-                        if (self.onInstallationComplete)
-                            self.onInstallationComplete();
+                    if (result == "onInstallationComplete")
+                    {
+                        self.onInstallationComplete();
                     }
-                    if (result.indexOf("onAdAvailable") > -1) {
+                    if (result.indexOf("onAdAvailable")>-1)
+                    {
                         var arr = result.split(',');
-                        if (arr[1] == "true") {
-                            if (!self._availableReawardBase) {
-                                self._availableReawardBase = true;
-                                if (self.onAdAvailableRewardBase)
-                                    self.onAdAvailableRewardBase();
-                            }
-                        } else if (arr[1] == "false") {
-                            if (!self._availableUnReawardBase) {
-                                self._availableUnReawardBase = true;
-                                if (self.onAdAvailableUnRewardBase)
-                                    self.onAdAvailableUnRewardBase();
-                            }
-                        } else {
-                            self.__availableFullscreenBanner = true;
+                        if(arr[1]=="true"){
+                            self._availableReawardBase = true ;
+                            self.onAdAvailableRewardBase();
+                        }else{
+                            self._availableUnReawardBase = true ;
+                            self.onAdAvailableUnRewardBase();
                         }
 
 
+
                     }
-                    if (result == "onAdFail") {
-                        self._availableReawardBase = false;
-                        self._availableUnReawardBase = false;
-                        self.__availableFullscreenBanner = false;
-                        if (self.onAdFail) {
+                    if (result == "onAdFail")
+                    {
+                        self._availableReawardBase = false ;
+                        self._availableUnReawardBase = false ;
+                        if (self.onAdFail)
                             self.onAdFail();
-                        }
-
                     }
-                    if (result.indexOf("onAdNotAvailable") > -1)
+                    if (result.indexOf( "onAdNotAvailable")>-1)
                     {
 
                         var arr = result.split(',');
-                        if (arr[1] == "true") {
-                            self._availableReawardBase = false;
-                        } else if (arr[1] == "false") {
-                            self._availableUnReawardBase = false;
-                        } else {
-                            self.__availableFullscreenBanner = false ;
+                        if(arr[1]=="true"){
+                            self._availableReawardBase = false ;
+                        }else{
+                            self._availableUnReawardBase = false ;
                         }
 
                     }
 
-                    if (result.indexOf("onConsumablePurchased") > -1) {
+                    if (result.indexOf("onConsumablePurchased")>-1)
+                    {
                         var arr = result.split(',');
-                        if (self.onConsumablePurchased)
-                            self.onConsumablePurchased(arr[1]);
+
+                        self.onConsumablePurchased(arr[1]);
                     }
-                    if (result.indexOf("onNonConsumablePurchased") > -1) {
+                    if (result.indexOf("onNonConsumablePurchased")>-1)
+                    {
 
                         var arr = result.split(',');
-                        if (self.onNonConsumablePurchased)
-                            self.onNonConsumablePurchased(arr[1]);
+                        self.onNonConsumablePurchased(arr[1]);
                     }
-                    if (result.indexOf("onPurchaseFail") > -1) {
+                    if (result.indexOf("onPurchaseFail")>-1)
+                    {
                         var arr = result.split(',');
-                        if (self.onPurchaseFail)
-                            self.onPurchaseFail(arr[1]);
+                        self.onPurchaseFail(arr[1]);
                     }
 
 
                 }
-                else {
+                else
+                {
                     //if (result["event"] == "onXXX") {
                     //	//result["message"]
                     //	if (self.onXXX)
@@ -103,7 +91,8 @@ module.exports = {
                     //}
                 }
             },
-            function (error) {
+            function (error)
+            {
                 console.log('setUp failed.');
             },
             'adPlayCordovaInterface',
@@ -111,7 +100,7 @@ module.exports = {
             [applicationId, developerId]
         );
     },
-    showAdRewardBase: function () {
+    showAdRewardBase: function() {
         cordova.exec(
             null,
             null,
@@ -120,7 +109,7 @@ module.exports = {
             [true]
         );
     },
-    showAdUnRewardBase: function () {
+    showAdUnRewardBase: function() {
         cordova.exec(
             null,
             null,
@@ -129,16 +118,7 @@ module.exports = {
             [false]
         );
     },
-    showFullscreenBannerAd: function () {
-        cordova.exec(
-            null,
-            null,
-            'adPlayCordovaInterface',
-            'showFullscreenBannerAd',
-            []
-        );
-    },
-    dispose: function () {
+    dispose: function() {
         cordova.exec(
             null,
             null,
@@ -147,7 +127,7 @@ module.exports = {
             []
         );
     },
-    setTestModeOn: function () {
+    setTestModeOn: function() {
         cordova.exec(
             null,
             null,
@@ -156,7 +136,7 @@ module.exports = {
             [true]
         );
     },
-    setTestModeOff: function () {
+    setTestModeOff: function() {
         cordova.exec(
             null,
             null,
@@ -165,7 +145,8 @@ module.exports = {
             [false]
         );
     },
-    checkAdAvailabilityRewardBase: function () {
+    checkAdAvailabilityRewardBase: function()
+    {
         cordova.exec
         (
             null,
@@ -175,7 +156,7 @@ module.exports = {
             [true]
         );
         return this._availableReawardBase;
-    }, checkAdAvailabilityUnRewardBase: function () {
+    },checkAdAvailabilityUnRewardBase: function() {
         cordova.exec(
             null,
             null,
@@ -185,46 +166,24 @@ module.exports = {
         );
         return this._availableUnReawardBase;
     },
-    checkFullscreenBannerAvailability: function () {
-        cordova.exec(
-            null,
-            null,
-            'adPlayCordovaInterface',
-            'checkFullscreenBannerAvailability',
-            []
-        );
-        return this.__availableFullscreenBanner;
-    },
-    initIAB: function (RSAKey, consumables, nonConsumables) {
+    initIAB: function(RSAKey,consumables,nonConsumables)
+    {
         cordova.exec(
             null,
             null,
             'adPlayCordovaInterface',
             'initIAB',
-            [RSAKey, consumables, nonConsumables]
+            [RSAKey,consumables,nonConsumables]
         );
     },
-    startIAB: function (element, payLoad) {
+    startIAB: function(element,payLoad)
+    {
         cordova.exec(
             null,
             null,
             'adPlayCordovaInterface',
             'startIAB',
-            [element, payLoad]
+            [element,payLoad]
         );
-    },
-    onAdAvailableRewardBase: null,
-    onAdAvailableUnRewardBase: null,
-    onAdFail: null,
-    onAdCompleteRewardBase: null,
-    onAdCompleteUnRewardBase: null,
-    onInstallationComplete: null,
-    onConsumablePurchased: null,
-    onNonConsumablePurchased: null,
-    onPurchaseFail: null
-
-
-
-
-
+    }
 };
