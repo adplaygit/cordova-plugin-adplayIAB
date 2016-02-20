@@ -41,8 +41,7 @@
 		</config-file>
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
 			<activity android:name="ir.adPlay.plugin.adPlayActivity"></activity>
-      <activity android:name="ir.adPlay.bazaarIAB.IABActivity" android:configChanges="locale|keyboard|keyboardHidden|orientation|screenSize"></activity>
-		
+      <activity android:name="ir.adPlay.bazaarIAB.IABActivity"></activity>
 		</config-file>
 		
 				
