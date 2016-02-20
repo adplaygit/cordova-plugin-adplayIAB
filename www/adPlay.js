@@ -52,6 +52,7 @@ module.exports = {
                     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                     if (result.indexOf( "onAdNotAvailable")>-1)
                     {
 =======
@@ -64,6 +65,8 @@ module.exports = {
                         }else{
                             self._availableUnReawardBase = false ;
 =======
+=======
+>>>>>>> parent of 047a17f... ....
                     if (result.indexOf("onAdNotAvailable") > -1) {
 
                         var arr = result.split(',');
@@ -74,6 +77,9 @@ module.exports = {
                         } else {
                             self.__availableFullscreenBanner = false
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 047a17f... ....
+=======
 >>>>>>> parent of 047a17f... ....
 =======
 >>>>>>> parent of 047a17f... ....
